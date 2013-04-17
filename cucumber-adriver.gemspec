@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = s.files.grep(/^[A-Z]+(\.md)*$/)
 
   s.add_runtime_dependency "cucumber", "~> 1.1.2"
+  s.add_runtime_dependency "cucumber-nagios", ">= 0.9.2"
   s.add_runtime_dependency "sys-proctable"
   s.add_development_dependency "rake", ">= 0.8.3"
 end

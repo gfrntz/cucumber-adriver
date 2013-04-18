@@ -1,3 +1,6 @@
+require 'cuken/ssh'
+require 'cucumber/nagios/steps'
+
 Given /^I logged in on remote host with ssh$/ do
   puts "ssh to #{ENV['host']}"
   step "I can ssh to \"#{ENV['host']}\" with the following credentials:", table(%{

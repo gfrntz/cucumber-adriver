@@ -1,3 +1,8 @@
+require 'sys/proctable'
+require 'etc'
+include Sys
+
+
 module Cucumber
   module Adriver
     module Command

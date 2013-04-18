@@ -1,4 +1,3 @@
-require 'cuken/ssh'
 require 'cucumber/nagios/steps'
 
 Given /^I logged in on remote host with ssh$/ do

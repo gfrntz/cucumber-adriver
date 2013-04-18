@@ -15,6 +15,7 @@ module Cucumber
           name[:cmdline] = ProcTable.ps("#{pid}".to_i)['cmdline']
           return name
         end
+        module_function :procgroup, :procname
     end
   end
 end

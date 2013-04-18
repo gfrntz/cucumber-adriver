@@ -1,7 +1,7 @@
 Given /^I test step$/ do
     if 1 == 2 
         puts 3
-    then 
+    else
         puts 4
     end
 end

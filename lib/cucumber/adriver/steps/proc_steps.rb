@@ -6,7 +6,7 @@ When /^I have parent pid "(.*?)"$/ do |pid|
 end
 
 When /^cmd line must be "(.*?)"$/ do |cmdline|
-  if cmdline == procname(@ppid)[:cmdline]
+  if cmdline == Cucumber::Adriver::Command.procname(@ppid)[:cmdline]
         puts cmdline
   else
         raise "Cmd line error"
@@ -31,7 +31,7 @@ end
 
 When /^child pid owner must be "(.*?)"$/ do |owner|
   @child_pids.each do |pid|
-    raise if owner != procgroup(pid)[:name]
+    raise if owner != Cucumber::Adriver::Command.procgroup(pid)[:name]
   end
 end
 

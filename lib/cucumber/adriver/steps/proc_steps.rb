@@ -1,3 +1,6 @@
+# Example:
+#   When I have parent pid "/var/run/foo.pid"
+#
 When /^I have parent pid "(.*?)"$/ do |pid|
   @ppid = File.open(pid).read.chomp
   puts @ppid

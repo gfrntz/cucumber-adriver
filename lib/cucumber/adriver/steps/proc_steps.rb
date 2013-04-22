@@ -1,7 +1,7 @@
 # Example:
-#   When I have parent pid "/var/run/foo.pid"
+#   When I have parent pid in pidfile "/var/run/foo.pid"
 #
-When /^I have parent pid "(.*?)"$/ do |pid|
+When /^I have parent pid in pidfile "(.*?)"$/ do |pid|
   @ppid = File.open(pid).read.chomp
   puts @ppid
 
@@ -9,11 +9,7 @@ When /^I have parent pid "(.*?)"$/ do |pid|
 end
 
 When /^cmd line must be "(.*?)"$/ do |cmdline|
-  if cmdline == Cucumber::Adriver::Command.procname(@ppid)[:cmdline]
-        puts cmdline
-  else
-        raise "Cmd line error"
-  end
+  cmdline.should eq(Cucumber::Adriver::Command.procname(@ppid)[:cmdline])
 end
 
 When /^child pids count must be "(.*?)"$/ do |chpid|
@@ -21,20 +17,15 @@ When /^child pids count must be "(.*?)"$/ do |chpid|
         /\D/.match pid
   end
 
-  p @child_pids
-
+  puts @child_pids
   puts @child_pids.size
 
-  if @child_pids.size == chpid.to_i
-    puts "Procs count true"
-  else
-    raise "Proc count #{chpid}"
-  end
+  @child_pids.size.should eq(chpid.to_i)
 end
 
 When /^child pid owner must be "(.*?)"$/ do |owner|
   @child_pids.each do |pid|
-    raise if owner != Cucumber::Adriver::Command.procgroup(pid)[:name]
+    owner.should be(Cucumber::Adriver::Command.procgroup(pid)[:name])
   end
 end
 

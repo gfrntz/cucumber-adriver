@@ -12,6 +12,7 @@ When /^cmd line must be "(.*?)"$/ do |cmdline|
   cmdline.should eq(Cucumber::Adriver::Command.procname(@ppid)[:cmdline])
 end
 
+# Use with "I have parent pid in pidfile"
 When /^child pids count must be "(.*?)"$/ do |chpid|
   @child_pids = `ps -o pid --ppid #{@ppid}`.split("\n").reject do |pid|
         /\D/.match pid

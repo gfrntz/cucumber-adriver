@@ -3,6 +3,9 @@ module Cucumber
     end
 end
 
+#
+# Code below was copied from cucumber-nagios
+#
 begin
     require 'cucumber/nagios/steps'
     require 'cucumber/adriver/version'
